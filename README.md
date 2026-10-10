@@ -50,3 +50,8 @@ with BootImageParser.from_file("boot.img") as parser:
 ```bash
 uv run pytest
 ```
+
+## Credits
+
+- **AOSP**: Android boot image format specifications and `bootimg.h`.
+- **osm0sis @ xda-developers**: [Android Image Kitchen](https://github.com/osm0sis/Android-Image-Kitchen) and [mkbootimg](https://github.com/osm0sis/mkbootimg) reference tools.
