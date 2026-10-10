@@ -5,7 +5,7 @@ Parse and unpack Android `boot.img` (v0–v4) and `vendor_boot.img` (v3–v4).
 ## Install
 
 ```bash
-uv tool install https://github.com/ardiandideyashidiq/boot-parser
+uv tool install git+https://github.com/ardiandideyashidiq/boot-parser
 ```
 
 Or for local development:
