@@ -10,5 +10,6 @@ wheels/
 .venv
 
 # Output directories
+output/
 *_unpacked/
 *.img_unpacked/

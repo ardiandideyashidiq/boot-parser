@@ -15,7 +15,7 @@ from boot_parser.extractor import BootImageExtractor
 from boot_parser.models import BootImageMetadata
 from boot_parser.parser import BootImageParser
 
-click.rich_click.USE_RICH_MARKUP = True
+click.rich_click.TEXT_MARKUP = "rich"
 click.rich_click.SHOW_ARGUMENTS = True
 click.rich_click.GROUP_ARGUMENTS_OPTIONS = True
 
@@ -145,7 +145,7 @@ def render_metadata_tables(metadata: BootImageMetadata) -> None:
     "out_dir",
     type=click.Path(path_type=Path),
     default=None,
-    help="Output directory for extracted payloads and metadata (defaults to ./<image_name>_unpacked)",
+    help="Output directory for extracted payloads and metadata (defaults to ./output/<image_name>_unpacked)",
 )
 @click.option(
     "--json",
@@ -198,7 +198,7 @@ def main(
 
     if out_dir is None:
         stem = image_path.stem
-        out_dir = Path.cwd() / f"{stem}_unpacked"
+        out_dir = Path.cwd() / "output" / f"{stem}_unpacked"
 
     try:
         with BootImageParser.from_file(image_path) as parser:

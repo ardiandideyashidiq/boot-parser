@@ -160,3 +160,21 @@ def test_real_boot_image() -> None:
     assert meta.os_patch_level == "2024-02"
     assert meta.base_address == 0x40078000
     assert len(meta.payloads) == 3
+
+
+def test_cli_default_output_dir(tmp_path: Path, monkeypatch) -> None:
+    from click.testing import CliRunner
+
+    from boot_parser.cli import main
+
+    img_path = Path("/home/rd/tmp/android-image-kitchen-complete/vendor_boot.img")
+    if not img_path.exists():
+        return
+
+    monkeypatch.chdir(tmp_path)
+    runner = CliRunner()
+    result = runner.invoke(main, [str(img_path), "--no-unpack-ramdisk", "-q"])
+    assert result.exit_code == 0
+    expected_dir = tmp_path / "output" / f"{img_path.stem}_unpacked"
+    assert expected_dir.is_dir()
+    assert (expected_dir / "metadata.json").is_file()

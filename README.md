@@ -17,19 +17,19 @@ uv sync
 ## Usage
 
 ```bash
-# Unpack image (extracts payloads + ramdisk to ./<image>_unpacked)
+# Unpack image (extracts payloads + ramdisk to ./output/<image>_unpacked)
 boot-parser boot.img
 
 # Extract to a specific folder
-uv run boot-parser vendor_boot.img -o ./out
+boot-parser vendor_boot.img -o ./out
 
 # Print JSON metadata only
-uv run boot-parser vendor_boot.img --json
+boot-parser vendor_boot.img --json
 ```
 
 ### Options
 
-- `-o, --output <dir>`: Target folder (default: `./<image>_unpacked`)
+- `-o, --output <dir>`: Target folder (default: `./output/<image>_unpacked`)
 - `--json`: Print metadata JSON to stdout
 - `--no-unpack-ramdisk`: Save raw compressed ramdisk without unpacking files
 - `-v, --debug`: Verbose logs
